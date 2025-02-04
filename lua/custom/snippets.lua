@@ -1,3 +1,4 @@
+print 'loading snippets -- 2025-02-01 -- I dont know why this doesnt print... it is loading'
 local ls = require 'luasnip'
 local s = ls.snippet
 local i = ls.insert_node

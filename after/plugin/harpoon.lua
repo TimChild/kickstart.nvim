@@ -1,5 +1,3 @@
-print 'Loading harpoon.lua'
-
 local harpoon = require 'harpoon'
 harpoon:setup {}
 
@@ -24,9 +22,9 @@ vim.keymap.set('n', '<leader>;', function()
 end, { desc = 'Harpoon 4' })
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set('n', '<leader>p', function()
-  harpoon:list():prev()
-end, { desc = 'Harpoon previous' })
-vim.keymap.set('n', '<leader>n', function()
-  harpoon:list():next()
-end, { desc = 'Harpoon next' })
+-- vim.keymap.set('n', '<leader>p', function()
+--   harpoon:list():prev()
+-- end, { desc = 'Harpoon previous' })
+-- vim.keymap.set('n', '<leader>n', function()
+--   harpoon:list():next()
+-- end, { desc = 'Harpoon next' })
