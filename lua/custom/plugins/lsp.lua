@@ -206,6 +206,11 @@ return {
                 format = {
                   enable = true,
                 },
+                customTags = {
+                  -- Docker compose 2025-02-12 -- Doesn't seem to work...
+                  '!override',
+                  '!reset',
+                },
                 validate = true,
                 schemaStore = {
                   -- Must disable built-in schemaStore support to use
