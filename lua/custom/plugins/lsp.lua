@@ -60,6 +60,9 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          -- Show the hover information for the word under your cursor.
+          map('<leader>m', vim.lsp.buf.hover, 'Docu[m]entation')
+
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
