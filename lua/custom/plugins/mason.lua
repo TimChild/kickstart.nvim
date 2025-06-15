@@ -9,13 +9,14 @@ return {
     ensure_installed = {
       'lua_ls',
       'pyright',
+      'ts_ls',
       'gopls',
       'html',
       'bashls',
       'dockerls',
       'yamlls',
-      'stylua', -- Used to format Lua code
-      'prettierd', -- Used to format HTML code
+      -- 'stylua', -- Used to format Lua code
+      -- 'prettierd', -- Used to format HTML code
     },
     automatic_enable = true,
   },
