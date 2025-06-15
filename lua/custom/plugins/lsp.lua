@@ -26,10 +26,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
     end
 
-    -- Enable LSP formatting
-    if client and client:supports_method 'textDocument/formatting' then
-      vim.lsp.format.enable(true, client.id, event.buf, { autotrigger = true })
-    end
+    -- -- Enable LSP formatting
+    -- if client and client:supports_method 'textDocument/formatting' then
+    --   vim.lsp.format.enable(true, client.id, event.buf, { autotrigger = true })
+    -- end
 
     if client and client:supports_method 'textDocument/documentHighlight' then
       local autocmd = vim.api.nvim_create_autocmd
