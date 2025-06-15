@@ -1,5 +1,4 @@
 -- LSP config for Neovim 0.11+
--- Built-in LSP client is easier to use now.
 -- Still using mason-lspconfig to manage which LSP servers are installed.
 -- And using nvim-lspconfig for default configurations of servers.
 -- Then this set's some additional default behaviour for LSP servers.

@@ -2,9 +2,12 @@
 return {
   'mason-org/mason-lspconfig.nvim',
   dependencies = {
-    { 'mason-org/mason.nvim', opts = {
-      ensure_installed = { 'stylua', 'prettierd' },
-    } },
+    {
+      'mason-org/mason.nvim',
+      opts = {
+        ensure_installed = { 'stylua', 'prettierd' }, -- NOTE:: Not sure I'm actually using these...
+      },
+    },
     'neovim/nvim-lspconfig',
   },
   opts = {
