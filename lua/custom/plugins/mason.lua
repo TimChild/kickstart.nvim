@@ -2,7 +2,9 @@
 return {
   'mason-org/mason-lspconfig.nvim',
   dependencies = {
-    { 'mason-org/mason.nvim', opts = {} },
+    { 'mason-org/mason.nvim', opts = {
+      ensure_installed = { 'stylua', 'prettierd' },
+    } },
     'neovim/nvim-lspconfig',
   },
   opts = {
@@ -15,8 +17,6 @@ return {
       'bashls',
       'dockerls',
       'yamlls',
-      -- 'stylua', -- Used to format Lua code
-      -- 'prettierd', -- Used to format HTML code
     },
     automatic_enable = true,
   },
