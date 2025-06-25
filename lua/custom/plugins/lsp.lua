@@ -110,10 +110,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.o.winborder = 'rounded'
 
 vim.diagnostic.config {
-  virtual_text = false,
-  virtual_lines = {
-    current_line = true,
-  },
+  -- virtual_text = false,
+  -- virtual_lines = {
+  --   current_line = true,
+  -- },
+  virtual_text = true,
+  virtual_lines = false,
 }
 
 -- Manually enable given LSP servers (with configs from ./lsp/<server>.lua)
