@@ -20,6 +20,8 @@ return {
       'bashls',
       'dockerls',
       'yamlls',
+      -- arduino
+      'arduino_language_server',
     },
     automatic_enable = true,
   },
