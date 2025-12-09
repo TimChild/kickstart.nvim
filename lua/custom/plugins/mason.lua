@@ -22,6 +22,7 @@ return {
       'yamlls',
       -- arduino
       'arduino_language_server',
+      'copilot_language_server',
     },
     automatic_enable = true,
   },
