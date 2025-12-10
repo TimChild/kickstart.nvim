@@ -7,6 +7,9 @@
 vim.lsp.config('*', {
   root_markers = { '.git' },
   capabilities = {
+    general = {
+      positionEncodings = { 'utf-16' },
+    },
     textDocument = {
       semanticTokens = {
         multilineTokenSupport = true,
