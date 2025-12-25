@@ -22,7 +22,10 @@ return {
       'yamlls',
       -- arduino
       'arduino_language_server',
+<<<<<<< HEAD
       'copilot_language_server',
+=======
+>>>>>>> sync-with-upstream
     },
     automatic_enable = true,
   },
