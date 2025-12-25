@@ -24,7 +24,7 @@ return {
       suggestion = {
         enabled = true,
         auto_trigger = true,
-        hide_during_completion = true,
+        hide_during_completion = false, -- Don't hide during blink.cmp completion
         debounce = 75,
         keymap = {
           accept = '<Tab>',
@@ -36,17 +36,39 @@ return {
         },
       },
       filetypes = {
-        -- Override internal defaults by explicitly setting to true
-        ['*'] = true, -- Enable for all filetypes by default
+        -- Enable for all filetypes by explicitly listing them
+        -- Using ['*'] = true doesn't always work, so we list common ones
+        python = true,
+        javascript = true,
+        typescript = true,
+        javascriptreact = true,
+        typescriptreact = true,
+        lua = true,
+        go = true,
+        rust = true,
+        c = true,
+        cpp = true,
+        java = true,
+        ruby = true,
+        php = true,
+        html = true,
+        css = true,
+        scss = true,
+        json = true,
         yaml = true,
+        toml = true,
         markdown = true,
-        help = false,
+        sh = true,
+        bash = true,
+        zsh = true,
+        vim = true,
+        sql = true,
+        -- Disable for these
+        [''] = false,
+        ['.'] = false,
         gitcommit = false,
         gitrebase = false,
-        hgcommit = false,
-        svn = false,
-        cvs = false,
-        ['.'] = false,
+        help = false,
       },
       copilot_node_command = 'node',
       server_opts_overrides = {},
