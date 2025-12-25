@@ -27,7 +27,7 @@ return {
         hide_during_completion = false, -- Don't hide during blink.cmp completion
         debounce = 75,
         keymap = {
-          accept = '<Tab>',
+          accept = false, -- We'll set up a smarter Tab mapping below
           accept_word = false,
           accept_line = false,
           next = '<M-]>',
@@ -73,6 +73,16 @@ return {
       copilot_node_command = 'node',
       server_opts_overrides = {},
     }
+    
+    -- Smart Tab: accept Copilot suggestion if available, otherwise normal tab behavior
+    vim.keymap.set('i', '<Tab>', function()
+      if require('copilot.suggestion').is_visible() then
+        require('copilot.suggestion').accept()
+      else
+        -- Fallback to normal tab (or snippet expansion if you use snippets)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'n', false)
+      end
+    end, { desc = 'Accept Copilot suggestion or insert tab' })
     
     -- Add keybinding to toggle Copilot
     vim.keymap.set('n', '<leader>tc', '<cmd>Copilot toggle<CR>', { desc = '[T]oggle [C]opilot' })
