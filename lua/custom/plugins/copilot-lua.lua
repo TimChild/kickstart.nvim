@@ -1,54 +1,58 @@
--- GitHub Copilot integration using the modern LSP approach
--- This integrates with blink.cmp for better completion experience
+-- GitHub Copilot integration using copilot.lua with inline suggestions
+-- Works alongside blink.cmp (copilot shows as ghost text, blink shows in menu)
 return {
-  {
-    -- Copilot.lua provides the copilot language server integration
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    config = function()
-      require('copilot').setup {
-        panel = {
-          enabled = false, -- Disable panel, use blink.cmp instead
+  'zbirenbaum/copilot.lua',
+  cmd = 'Copilot',
+  event = 'InsertEnter',
+  config = function()
+    require('copilot').setup {
+      panel = {
+        enabled = true,
+        auto_refresh = false,
+        keymap = {
+          jump_prev = '[[',
+          jump_next = ']]',
+          accept = '<CR>',
+          refresh = 'gr',
+          open = '<M-CR>',
         },
-        suggestion = {
-          enabled = false, -- Disable inline suggestions, use blink.cmp instead
+        layout = {
+          position = 'bottom',
+          ratio = 0.4,
         },
-        filetypes = {
-          -- Enable for most filetypes (set to true to override internal defaults)
-          ['*'] = true, -- Enable for all filetypes by default
-          -- Explicitly enable for common filetypes to override any internal blocks
-          python = true,
-          javascript = true,
-          typescript = true,
-          lua = true,
-          go = true,
-          rust = true,
-          markdown = true,
-          yaml = true,
-          json = true,
-          toml = true,
-          sh = true,
-          bash = true,
-          c = true,
-          cpp = true,
-          html = true,
-          css = true,
-          -- Disable for specific types if needed
-          gitcommit = false,
-          gitrebase = false,
-          help = false,
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        hide_during_completion = true,
+        debounce = 75,
+        keymap = {
+          accept = '<Tab>',
+          accept_word = false,
+          accept_line = false,
+          next = '<M-]>',
+          prev = '<M-[>',
+          dismiss = '<C-]>',
         },
-        copilot_node_command = 'node',
-      }
-    end,
-  },
-  {
-    -- Copilot-cmp integrates copilot with nvim-cmp and blink.cmp
-    'zbirenbaum/copilot-cmp',
-    dependencies = { 'zbirenbaum/copilot.lua' },
-    config = function()
-      require('copilot_cmp').setup()
-    end,
-  },
+      },
+      filetypes = {
+        -- Override internal defaults by explicitly setting to true
+        ['*'] = true, -- Enable for all filetypes by default
+        yaml = true,
+        markdown = true,
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ['.'] = false,
+      },
+      copilot_node_command = 'node',
+      server_opts_overrides = {},
+    }
+    
+    -- Add keybinding to toggle Copilot
+    vim.keymap.set('n', '<leader>tc', '<cmd>Copilot toggle<CR>', { desc = '[T]oggle [C]opilot' })
+  end,
 }
